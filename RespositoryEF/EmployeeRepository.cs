@@ -50,7 +50,6 @@ namespace RespositoryEF
                 Employee e = GetEmployee(emp.Id);
                 if (emp != null)
                 {
-                    
                     e.Name = emp.Name;
                     e.StartDate = emp.StartDate;
                     GuardarCambios();
@@ -142,11 +141,18 @@ namespace RespositoryEF
             List<Employee> empleados = new List<Employee>();   
             try
             {
-                var list = Filtrar();
+                var list = ObtenerTodos();
+                foreach (var e in list)
+                {
+                    if (e.Name == searchTerm)
+                    {
+                        empleados.Add(e);
+                    }
+                }
+                return empleados;
             }
             catch (Exception ex)
             {
-                
                 throw ex;
             }
         }
