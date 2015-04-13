@@ -47,13 +47,13 @@ namespace RespositoryEF
         {
             try
             {
-                
-
+                Employee e = GetEmployee(emp.Id);
                 if (emp != null)
                 {
-                    empleado.Name = emp.Name;
-                    empleado.StartDate = emp.StartDate;
-                    db.SaveChangesAsync();
+                    
+                    e.Name = emp.Name;
+                    e.StartDate = emp.StartDate;
+                    GuardarCambios();
                 }
             }
             catch (Exception ex)
@@ -66,22 +66,38 @@ namespace RespositoryEF
         // listo empleado
         public List<Employee> GetAllEmployees()
         {
-            List<Employee> empleados = new List<Employee>();   
+            //List<Employee> empleados = new List<Employee>();   
+            //try
+            //{
+            //    empleados = db.Employee.ToList();
+            //    return empleados;
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //}
+            List<Employee> empleados = new List<Employee>();
             try
             {
-                empleados = db.Employee.ToList();
+                var emps = ObtenerTodos();
+                foreach (var e in emps)
+                {
+                    empleados.Add(e);
+                }
                 return empleados;
             }
+
             catch (Exception ex)
             {
                 throw ex;
             }
+            
         }
 
         // obtengo empleado
         public Employee GetEmployee(int id)
         {
-            Employee emp = null;
+            /*Employee emp = null;
             
             try
             {
@@ -94,21 +110,43 @@ namespace RespositoryEF
             catch (Exception ex)
             {
                 throw ex;
+            }*/
+
+            try
+            {
+                Employee emp = ObtenerPorId(id);
+                return emp;
             }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+            
         }
 
         // busco empleados    
         public List<Employee> SearchEmployees(string searchTerm)
         {
+            //List<Employee> empleados = new List<Employee>();   
+            //try
+            //{
+            //    empleados =  db.Employee
+            //        .Where(w => w.Name == searchTerm).ToList();
+            //    return empleados;
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //}
             List<Employee> empleados = new List<Employee>();   
             try
             {
-                empleados =  db.Employee
-                    .Where(w => w.Name == searchTerm).ToList();
-                return empleados;
+                var list = Filtrar();
             }
             catch (Exception ex)
             {
+                
                 throw ex;
             }
         }
