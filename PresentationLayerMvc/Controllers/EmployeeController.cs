@@ -12,26 +12,29 @@ using RepositoryEmployee;
 
 namespace PresentationLayerMvc.Controllers
 {
-    public class PartTimeEmployeesController : Controller
+    public class EmployeeController : Controller
     {
         //private Contexto db = new Contexto();
         private IEmployeeRepository repositorio;
 
-        // GET: PartTimeEmployees
+        // GET: Employee
         public ActionResult Index()
         {
             repositorio = new EmployeeRepository();
             var empleados = repositorio.GetAllEmployees();
             /*
+            var emp = new List<PartTimeEmployee>();
+
             foreach (var item in empleados)
 	        {
 		        if (item is PartTimeEmployee)
 	            {
-                    
-	            }
-	        }*/
 
-            return View(empleados.ToList());
+                    emp.Add((PartTimeEmployee)item);
+	            }
+	        }
+            */
+            return View(empleados);
         }
 
         // GET: PartTimeEmployees/Details/5
@@ -39,11 +42,6 @@ namespace PresentationLayerMvc.Controllers
         {
             repositorio = new EmployeeRepository();
 
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            
             var empleado = repositorio.GetEmployee(id);
             Employee emp = (Employee)empleado;
             if (emp is PartTimeEmployee)
@@ -61,8 +59,36 @@ namespace PresentationLayerMvc.Controllers
             }
         }
 
+        // GET: FullTimeEmployees/Details/5
+        public ActionResult DetailsFull(int id)
+        {
+            repositorio = new EmployeeRepository();
+
+            var empleado = repositorio.GetEmployee(id);
+            Employee emp = (Employee)empleado;
+            if (emp is FullTimeEmployee)
+            {
+                FullTimeEmployee fullTimeEmployee = (FullTimeEmployee)empleado;
+                if (fullTimeEmployee == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(fullTimeEmployee);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+        }
+
         // GET: PartTimeEmployees/Create
         public ActionResult Create()
+        {
+            return View();
+        }
+
+        // GET: FullTimeEmployees/Create
+        public ActionResult CreateFull()
         {
             return View();
         }
@@ -85,15 +111,28 @@ namespace PresentationLayerMvc.Controllers
             return View(partTimeEmployee);
         }
 
+        // POST: FullTimeEmployees/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateFull([Bind(Include = "Id,Name,StartDate,Salary")] FullTimeEmployee fullTimeEmployee)
+        {
+            if (ModelState.IsValid)
+            {
+                repositorio = new EmployeeRepository();
+                repositorio.AddEmployee(fullTimeEmployee);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(fullTimeEmployee);
+        }
+
         // GET: PartTimeEmployees/Edit/5
         public ActionResult Edit(int id)
         {
             repositorio = new EmployeeRepository();
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
 
             var empleado = repositorio.GetEmployee(id);
             Employee emp = (Employee)empleado;
@@ -111,6 +150,29 @@ namespace PresentationLayerMvc.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             
+        }
+
+        // GET: FullTimeEmployees/Edit/5
+        public ActionResult EditFull(int id)
+        {
+            repositorio = new EmployeeRepository();
+
+            var empleado = repositorio.GetEmployee(id);
+            Employee emp = (Employee)empleado;
+            if (emp is FullTimeEmployee)
+            {
+                FullTimeEmployee fullTimeEmployee = (FullTimeEmployee)empleado;
+                if (fullTimeEmployee == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(fullTimeEmployee);
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
         }
 
         // POST: PartTimeEmployees/Edit/5
@@ -132,15 +194,29 @@ namespace PresentationLayerMvc.Controllers
             return View(partTimeEmployee);
         }
 
+        // POST: PartTimeEmployees/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditFull([Bind(Include = "Id,Name,StartDate,Salary")] FullTimeEmployee  fullTimeEmployee)
+        {
+
+            repositorio = new EmployeeRepository();
+
+            if (ModelState.IsValid)
+            {
+                Employee emp = (Employee)fullTimeEmployee;
+                repositorio.UpdateEmployee(emp);
+                return RedirectToAction("Index");
+            }
+            return View(fullTimeEmployee);
+        }
+
         // GET: PartTimeEmployees/Delete/5
         public ActionResult Delete(int id)
         {
             repositorio = new EmployeeRepository();
-
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
 
             PartTimeEmployee partTimeEmployee = (PartTimeEmployee)repositorio.GetEmployee(id);
             if (partTimeEmployee == null)
@@ -148,6 +224,19 @@ namespace PresentationLayerMvc.Controllers
                 return HttpNotFound();
             }
             return View(partTimeEmployee);
+        }
+
+        // GET: FullTimeEmployees/Delete/5
+        public ActionResult DeleteFull(int id)
+        {
+            repositorio = new EmployeeRepository();
+
+            FullTimeEmployee fullTimeEmployee = (FullTimeEmployee)repositorio.GetEmployee(id);
+            if (fullTimeEmployee == null)
+            {
+                return HttpNotFound();
+            }
+            return View(fullTimeEmployee);
         }
 
         // POST: PartTimeEmployees/Delete/5
@@ -160,6 +249,8 @@ namespace PresentationLayerMvc.Controllers
             repositorio.DeleteEmployee(id);
             return RedirectToAction("Index");
         }
+
+
 
         /*
         protected override void Dispose(bool disposing)

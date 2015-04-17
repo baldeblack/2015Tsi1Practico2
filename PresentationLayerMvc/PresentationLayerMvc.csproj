@@ -184,7 +184,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PartTimeEmployeesController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -252,11 +252,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\PartTimeEmployees\Create.cshtml" />
-    <Content Include="Views\PartTimeEmployees\Delete.cshtml" />
-    <Content Include="Views\PartTimeEmployees\Details.cshtml" />
-    <Content Include="Views\PartTimeEmployees\Edit.cshtml" />
-    <Content Include="Views\PartTimeEmployees\Index.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\CreateFull.cshtml" />
+    <Content Include="Views\Employee\DeleteFull.cshtml" />
+    <Content Include="Views\Employee\DetailsFull.cshtml" />
+    <Content Include="Views\Employee\EditFull.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

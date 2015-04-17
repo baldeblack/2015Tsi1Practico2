@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Shared.Entities.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear PartTimeEmployee", "Create", "Employee",null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Crear FullTimeEmployee", "CreateFull", "Employee",null, new { @class = "btn btn-default" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @if(item is Shared.Entities.FullTimeEmployee)
+            {
+                Write("F");
+            }
+            else
+            {
+                Write("P");
+            }
+            
+        </td>
+        <td>
+            @if (item is Shared.Entities.PartTimeEmployee)
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-default" })
+            }
+            else
+            {
+                @Html.ActionLink("Edit", "EditFull", new { id = item.Id }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Details", "DetailsFull", new { id = item.Id }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Delete", "DeleteFull", new { id = item.Id }, new { @class = "btn btn-default" })
+            }
+        </td>
+    </tr>
+}
+
+</table>
