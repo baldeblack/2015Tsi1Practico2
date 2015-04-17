@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PartTimeEmployeesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,6 +252,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\PartTimeEmployees\Create.cshtml" />
+    <Content Include="Views\PartTimeEmployees\Delete.cshtml" />
+    <Content Include="Views\PartTimeEmployees\Details.cshtml" />
+    <Content Include="Views\PartTimeEmployees\Edit.cshtml" />
+    <Content Include="Views\PartTimeEmployees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -270,6 +276,14 @@
     <ProjectReference Include="..\CrossCutting\Shared.csproj">
       <Project>{8b1e409e-8eb8-4171-8d99-5db230da4889}</Project>
       <Name>Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RepositoryEmployee\RepositoryEmployee.csproj">
+      <Project>{2799f6f1-2104-492a-8cde-f5441019a31f}</Project>
+      <Name>RepositoryEmployee</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RespositoryEF\RespositoryEF.csproj">
+      <Project>{a0b5b949-e62a-4110-86d1-808d424907c2}</Project>
+      <Name>RespositoryEF</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

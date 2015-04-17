@@ -1,4 +1,4 @@
-﻿using DataAccessLayer;
+﻿using RepositoryEmployee;
 using Shared.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,41 +10,41 @@ namespace BusinessLogicLayer
 {
     public class BLEmployees : IBLEmployees
     {
-       private IDALEmployees _dal;
+       private IEmployeeRepository _rep;
 
-        public BLEmployees(IDALEmployees dal)
+       public BLEmployees(IEmployeeRepository rep)
         {
-            _dal = dal;
+            _rep = rep;
         }
 
         public void AddEmployee(Employee emp)
         {
-            _dal.AddEmployee(emp);
+            _rep.AddEmployee(emp);
         }
 
         public void DeleteEmployee(int id)
         {
-            _dal.DeleteEmployee(id);
+            _rep.DeleteEmployee(id);
         }
 
         public void UpdateEmployee(Employee emp)
         {
-            _dal.UpdateEmployee(emp);
+            _rep.UpdateEmployee(emp);
         }
 
         public List<Employee> GetAllEmployees()
         {
-            return _dal.GetAllEmployees();
+            return _rep.GetAllEmployees();
         }
 
         public Employee GetEmployee(int id)
         {
-            return _dal.GetEmployee(id);
+            return _rep.GetEmployee(id);
         }
 
         public List<Employee> SearchEmployees(string searchTerm)
         {
-            return _dal.SearchEmployees(searchTerm);
+            return _rep.SearchEmployees(searchTerm);
         }
 
         public double CalcPartTimeEmployeeSalary(int idEmployee, int hours)
@@ -54,7 +54,7 @@ namespace BusinessLogicLayer
             try
             {
                 double suma = 0;
-                Employee em = _dal.GetEmployee(idEmployee);
+                Employee em = _rep.GetEmployee(idEmployee);
       
 		        if (em != null)
                 {

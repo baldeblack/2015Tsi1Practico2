@@ -15,13 +15,13 @@ namespace Test
         [TestMethod]
         public void InitTest()
         {
-            Helper.RegisterTypes(container);
+            //Helper.RegisterTypes(container);
         }
 
         [TestMethod]
         public void CalcPartTimeEmployeeSalaryTestMethod()
         {
-            InitTest();
+            //InitTest();
             //arrange
             int hours = 10;
             IBLEmployees blHandler = container.Resolve<IBLEmployees>();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RepositoryEmployee
 {
-    interface IEmployeeRepository
+    public interface IEmployeeRepository
     {
         void AddEmployee(Employee emp);
 

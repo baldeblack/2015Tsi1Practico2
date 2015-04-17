@@ -11,8 +11,8 @@ namespace Shared.Entities
     public class PartTimeEmployee : Employee
     {
         [Required]
-        
         [Column("RATE")]
+        [Display(Name = "Pago por hora")]
         public double HourlyRate { get; set; }
     }
 }

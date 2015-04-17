@@ -10,7 +10,7 @@ namespace RespositoryEF
 {
     public class EmployeeRepository : BaseRepository<Employee>, IEmployeeRepository
     {
-        Contexto db = new Contexto();
+        //Contexto db = new Contexto();
 
         public void AddEmployee(Employee emp)
         {
@@ -85,7 +85,6 @@ namespace RespositoryEF
                 }
                 return empleados;
             }
-
             catch (Exception ex)
             {
                 throw ex;

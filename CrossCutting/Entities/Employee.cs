@@ -12,12 +12,15 @@ namespace Shared.Entities
     {
 
         [Column("ID")]
+        [Display(Name="Id")]
         public int Id { get; set; }
 
         [Column("NAME")]
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
 
         [Column("START_DATE")]
+        [Display(Name = "Fecha inicial")]
         public DateTime StartDate { get; set; }
     }
 }

@@ -51,6 +51,10 @@
       <Project>{8b1e409e-8eb8-4171-8d99-5db230da4889}</Project>
       <Name>Shared</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RepositoryEmployee\RepositoryEmployee.csproj">
+      <Project>{2799f6f1-2104-492a-8cde-f5441019a31f}</Project>
+      <Name>RepositoryEmployee</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

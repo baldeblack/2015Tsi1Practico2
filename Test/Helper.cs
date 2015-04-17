@@ -1,5 +1,4 @@
 ﻿using BusinessLogicLayer;
-using DataAccessLayer;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 namespace Test
 {
     public static class Helper
-    {
+    {/*
         public static void RegisterTypes(UnityContainer container)
         {
             //register the concrete implementation for interfaces
@@ -25,6 +24,6 @@ namespace Test
             BLEmployees blEmployees = new BLEmployees(container.Resolve<IDALEmployees>());
             container.RegisterInstance(blEmployees);
         }
-
+        */
     }
 }
