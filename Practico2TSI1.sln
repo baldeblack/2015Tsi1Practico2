@@ -17,6 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryEmployee", "Repos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RespositoryEF", "RespositoryEF\RespositoryEF.csproj", "{A0B5B949-E62A-4110-86D1-808D424907C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryAPI", "RepositoryAPI\RepositoryAPI.csproj", "{92C8AF7D-CEB5-4377-827D-E8CA4DEC8889}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8B1E409E-8EB8-4171-8D99-5DB230DA4889} = {8B1E409E-8EB8-4171-8D99-5DB230DA4889}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +56,10 @@ Global
 		{A0B5B949-E62A-4110-86D1-808D424907C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0B5B949-E62A-4110-86D1-808D424907C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0B5B949-E62A-4110-86D1-808D424907C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92C8AF7D-CEB5-4377-827D-E8CA4DEC8889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92C8AF7D-CEB5-4377-827D-E8CA4DEC8889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92C8AF7D-CEB5-4377-827D-E8CA4DEC8889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92C8AF7D-CEB5-4377-827D-E8CA4DEC8889}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
